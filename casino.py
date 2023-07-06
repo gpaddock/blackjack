@@ -7,21 +7,21 @@ def bj(chips):
     lobby(chips)
 
 
-def bank():
+def bank(chips):
     clear()
     print("Welcome to the bank!")
     print("How many BlueBucks would you like to buy?")
     print("1 BlueBuck = 1.75 USD = 1.61 EUR")
-    print("1. 10 BlueBucks")
-    print("2. 50 BlueBucks")
-    print("3. 100 BlueBucks")
+    print("10 BlueBucks")
+    print("50 BlueBucks")
+    print("100 BlueBucks")
     print("...")
     print("4. Return to lobby")
-    match int(input):
-        case 1: chips += 10
-        case 2: chips += 50
-        case 3: chips += 100
-        case 4: lobby(chips)
+    amount = int(input())
+    if amount == 4:
+        lobby(chips)
+    else:
+        chips += amount
         
 
 def clear():
@@ -40,16 +40,15 @@ def lobby(chips):
     print("0. Cashout and Exit")
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
     selection = int(input())
-    match selection:
-        case 1:
-            bj(chips)
-        case 9:
-            bank(chips)
-        case 0:
-            print(f"Your {chips} BlueBucks won you:")
-            print(f"{chips*1.75} USD or {chips * 1.61} EUR")
-            print("Have a nice day!")
-            exit()
+    if selection == 1:
+        bj(chips)
+    if selection == 2:
+        bank(chips)
+    if selection == 0:
+        print(f"Your {chips} BlueBucks won you:")
+        print(f"{chips*1.75} USD or {chips * 1.61} EUR")
+        print("Have a nice day!")
+        exit()
 
 
 if __name__ == "__main__":
